@@ -7,13 +7,13 @@ public class FrontController extends AbstractAnnotationConfigDispatcherServletIn
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 
-		return new Class[] { SpringWebMVCConfig.class };
+		return new Class[] { AppContext.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 
-		return new Class[] {};
+		return new Class[] { SpringWebMVCConfig.class };
 
 	}
 
