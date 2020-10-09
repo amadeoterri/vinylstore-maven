@@ -15,11 +15,30 @@ public class VinylService implements IVinylService {
 
 	// inject vinyldao
 	@Autowired
-	private IVinylDAO vinylDAO;
+	private IVinylDAO _vinylDAO;
 
 	@Transactional
 	public List<Vinyl> getVinyls() {
 
-		return vinylDAO.getVinyls();
+		return _vinylDAO.getVinyls();
+	}
+
+	@Transactional
+	public void saveVinyl(Vinyl vinyl) {
+
+		_vinylDAO.saveVinyl(vinyl);
+
+	}
+
+	@Transactional
+	public Vinyl getVinyl(int id) {
+
+		return _vinylDAO.getVinyl(id);
+	}
+
+	@Transactional
+	public void deleteVinyl(int id) {
+
+		_vinylDAO.deleteVinyl(id);
 	}
 }

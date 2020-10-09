@@ -16,7 +16,7 @@ public class VinylDAO implements IVinylDAO {
 
 	// inject session factory
 	@Autowired
-	private SessionFactory sessionFactory;
+	private SessionFactory _sessionFactory;
 
 	public List<Vinyl> getVinyls() {
 
@@ -24,7 +24,7 @@ public class VinylDAO implements IVinylDAO {
 		List<Vinyl> vinyls = new ArrayList<Vinyl>();
 
 		// get session
-		Session session = sessionFactory.getCurrentSession();
+		Session session = _sessionFactory.getCurrentSession();
 
 		// Create query
 		Query<Vinyl> query = session.createQuery("FROM Vinyl ORDER BY artist", Vinyl.class);
@@ -34,6 +34,32 @@ public class VinylDAO implements IVinylDAO {
 
 		// return list
 		return vinyls;
+
+	}
+
+	public void saveVinyl(Vinyl vinyl) {
+
+		Session session = _sessionFactory.getCurrentSession();
+
+		session.saveOrUpdate(vinyl);
+
+	}
+
+	public Vinyl getVinyl(int id) {
+
+		Session session = _sessionFactory.getCurrentSession();
+
+		Vinyl vinyl = session.get(Vinyl.class, id);
+
+		return vinyl;
+
+	}
+
+	public void deleteVinyl(int id) {
+
+		Session session = _sessionFactory.getCurrentSession();
+
+		session.delete(session.get(Vinyl.class, id));
 
 	}
 

@@ -8,4 +8,10 @@ public interface IVinylDAO {
 
 	public List<Vinyl> getVinyls();
 
+	public void saveVinyl(Vinyl vinyl);
+
+	public Vinyl getVinyl(int id);
+
+	public void deleteVinyl(int id);
+
 }
